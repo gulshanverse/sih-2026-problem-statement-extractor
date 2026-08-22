@@ -40,42 +40,64 @@
 
 ## ⚙️ Installation
 
-Clone the repository:
+### 1. Clone the Repository
+
+Clone the repository and move into the project directory:
 
 ~~~bash
 git clone https://github.com/gulshanverse/sih-2026-problem-statement-extractor.git
 cd sih-2026-problem-statement-extractor
 ~~~
 
-Install dependencies:
+### 2. Install Dependencies
+
+Install the required Python packages:
 
 ~~~bash
 pip install -r requirements.txt
 ~~~
 
+---
+
 ## ▶️ Usage
 
-Place your locally saved SIH HTML source in the project directory:
+The repository already includes the SIH 2026 HTML source file:
 
 ~~~text
 sih2026ps.html
 ~~~
 
-Then run:
+So you **do not need to download or provide another input file** for the default setup.
+
+Simply run:
 
 ~~~bash
 python extract_sih.py
 ~~~
 
-### Custom Input / Output
+The extractor will read `sih2026ps.html`, process the 226 SIH 2026 Problem Statements, validate the extracted records, and generate the output files automatically.
+
+---
+
+### 🔧 Custom Input / Output
+
+You can also use a different compatible SIH HTML source file and choose a custom output location:
+
+~~~bash
+python extract_sih.py --input path/to/your_file.html --output path/to/output.xlsx
+~~~
+
+For example:
 
 ~~~bash
 python extract_sih.py --input sih2026ps.html --output output/SIH_2026_Problem_Statements.xlsx
 ~~~
 
+---
+
 ## 📦 Output
 
-The extractor generates:
+After a successful run, the generated files are available inside the `output/` directory:
 
 ~~~text
 output/
@@ -83,12 +105,43 @@ output/
 └── SIH_2026_Problem_Statements.csv
 ~~~
 
-The Excel workbook contains:
+### 📊 Excel Workbook
 
-1. **Problem Statements** — cleaned and deduplicated records
-2. **Summary** — extraction and validation information
-3. **Field Statistics** — field availability statistics
-4. **Raw Data** — less-processed records for verification
+The generated Excel workbook contains:
+
+1. **Problem Statements** — all extracted, cleaned, and deduplicated problem statements.
+2. **Summary** — extraction metadata and validation results.
+3. **Field Statistics** — statistics showing how many records contain each available field.
+4. **Raw Data** — a less-processed representation of the extracted records for verification and debugging.
+
+### 📄 CSV File
+
+`SIH_2026_Problem_Statements.csv` contains the extracted problem statements in a standard UTF-8 CSV format, making the data easy to use with:
+
+- Microsoft Excel
+- Google Sheets
+- Pandas
+- Data analysis tools
+- Other applications supporting CSV files
+
+---
+
+## ✅ Quick Start
+
+For the fastest setup:
+
+~~~bash
+git clone https://github.com/gulshanverse/sih-2026-problem-statement-extractor.git
+cd sih-2026-problem-statement-extractor
+pip install -r requirements.txt
+python extract_sih.py
+~~~
+
+That's it. The generated Excel and CSV files will be available in:
+
+~~~text
+output/
+~~~
 
 ## ✅ Validation
 
@@ -170,4 +223,8 @@ Feel free to open a **GitHub Issue** or submit a **Pull Request**.
 
 ---
 
-⭐ If you find this project useful, consider giving it a star!
+<div align="center">
+
+⭐ **If you find this project useful, consider giving it a star!**
+
+</div>
