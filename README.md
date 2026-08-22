@@ -1,47 +1,173 @@
-# SIH 2026 Problem Statements Extractor
+# 🚀 SIH 2026 Problem Statements Extractor
 
-This project extracts all SIH 2026 problem statements from the locally saved HTML dump and exports them to an Excel workbook.
+> A lightweight Python utility to extract SIH 2026 Problem Statements from a locally saved HTML source and export them into structured Excel and CSV files.
 
-## Installation
+## 🛠️ Built With
 
-```bash
+- 🐍 Python
+- 🍲 BeautifulSoup4 — HTML parsing
+- 🐼 Pandas — data processing
+- 📊 OpenPyXL — Excel generation
+- 🌐 HTML / DataTables — source structure
+- 📄 CSV — data export
+
+## ✨ Features
+
+- Extracts all 226 SIH 2026 Problem Statements
+- Parses the original HTML structure locally
+- Cleans and structures extracted data
+- Removes duplicate records
+- Preserves complete problem descriptions
+- Generates Excel and CSV files
+- Validates extracted records
+- Works offline after obtaining the HTML source
+- Does not depend on the live SIH website
+
+## 📋 Extracted Information
+
+| Field |
+|---|
+| Problem Statement ID |
+| Problem Statement Title |
+| Description |
+| Organization |
+| Department |
+| Category |
+| Theme |
+| Youtube Link |
+| Dataset Link |
+| Contact info |
+
+## ⚙️ Installation
+
+Clone the repository:
+
+~~~bash
+git clone https://github.com/gulshanverse/sih-2026-problem-statement-extractor.git
+cd sih-2026-problem-statement-extractor
+~~~
+
+Install dependencies:
+
+~~~bash
 pip install -r requirements.txt
-```
+~~~
 
-## Run
+## ▶️ Usage
 
-```bash
+Place your locally saved SIH HTML source in the project directory:
+
+~~~text
+sih2026ps.html
+~~~
+
+Then run:
+
+~~~bash
 python extract_sih.py
-```
+~~~
 
-Optional custom input/output paths:
+### Custom Input / Output
 
-```bash
+~~~bash
 python extract_sih.py --input sih2026ps.html --output output/SIH_2026_Problem_Statements.xlsx
-```
+~~~
 
-## Output
+## 📦 Output
 
-The script creates the following outputs under the `output/` folder:
+The extractor generates:
 
-- `SIH_2026_Problem_Statements.xlsx`
-- `SIH_2026_Problem_Statements.csv`
+~~~text
+output/
+├── SIH_2026_Problem_Statements.xlsx
+└── SIH_2026_Problem_Statements.csv
+~~~
 
-The workbook contains four sheets:
+The Excel workbook contains:
 
-1. `Problem Statements` — cleaned and deduplicated records.
-2. `Summary` — extraction metadata and validation results.
-3. `Field Statistics` — number of records that contain each field.
-4. `Raw Data` — a less-processed view of each record for debugging.
+1. **Problem Statements** — cleaned and deduplicated records
+2. **Summary** — extraction and validation information
+3. **Field Statistics** — field availability statistics
+4. **Raw Data** — less-processed records for verification
 
-## Troubleshooting
+## ✅ Validation
 
-- If fewer than 226 records are found, check whether the HTML structure changed and whether the table is still present under the same `#dataTablePS` identifier.
-- If the extraction fails because the HTML layout changed, inspect the table and modal markup in the HTML dump and update the selectors in `extract_sih.py` carefully.
-- If dependencies are missing, install them with `pip install -r requirements.txt`.
+The extractor validates:
 
-## Notes
+- Expected record count
+- Duplicate Problem Statement IDs
+- Missing important fields
+- Excel generation
+- CSV generation
 
-- The original HTML file is left untouched.
-- The script uses the actual structure in the archive instead of relying on the live SIH website.
-- Duplicate records are removed using a combination of PS ID, title, and description.
+Expected SIH 2026 records:
+
+**226**
+
+## 🧩 How It Works
+
+~~~text
+SIH HTML Source
+      ↓
+HTML Parsing
+      ↓
+Problem Statement Extraction
+      ↓
+Data Cleaning
+      ↓
+Deduplication
+      ↓
+Validation
+      ↓
+Excel + CSV
+~~~
+
+## 🐛 Troubleshooting
+
+### Fewer than 226 records are extracted
+
+Check whether the HTML structure has changed and whether the main table is still available under:
+
+~~~text
+#dataTablePS
+~~~
+
+### HTML structure has changed
+
+Inspect the table and modal markup in the HTML source and update the selectors in:
+
+~~~text
+extract_sih.py
+~~~
+
+### Missing dependencies
+
+Run:
+
+~~~bash
+pip install -r requirements.txt
+~~~
+
+## 📌 Notes
+
+- The original HTML source is left untouched.
+- Extraction is performed locally.
+- The tool does not depend on the live SIH website.
+- Duplicate records are removed using Problem Statement ID, title, and description.
+- The extractor preserves available problem-statement content rather than summarizing it.
+
+## 📄 License
+
+This project is open source and released under the **MIT License**.
+
+The MIT License applies to the original source code of this project. SIH Problem Statement content and other third-party materials remain subject to their respective rights and terms.
+
+## 🤝 Contributing
+
+Contributions, improvements, and bug reports are welcome.
+
+Feel free to open a **GitHub Issue** or submit a **Pull Request**.
+
+---
+
+⭐ If you find this project useful, consider giving it a star!
